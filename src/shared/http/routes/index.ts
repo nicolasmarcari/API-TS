@@ -1,11 +1,12 @@
-import { AppError } from "@shared/errors/appError";
 import { Router } from "express";
+import { rolesRouter } from "@roles/http/routes/routes.routes";
 
 const routes = Router();
 
 routes.get("/", (req, res) => {
-  throw new AppError("Acesso negado");
   res.json({ message: "Opa" });
 });
+
+routes.use("/roles", rolesRouter);
 
 export { routes };
