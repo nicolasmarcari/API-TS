@@ -5,13 +5,13 @@ type CreateRoleDTO = {
 };
 
 export class RolesRpository {
-  private roles: Role[] = [];
+  private roles: Role[];
 
   constructor() {
     this.roles = [];
   }
 
-  create({ name }: CreateRoleDTO) {
+  create({ name }: CreateRoleDTO): Role {
     const role = new Role();
     //Faz o merge entre os dois objetos
     Object.assign(role, {
@@ -21,5 +21,9 @@ export class RolesRpository {
 
     this.roles.push(role);
     return role;
+  }
+
+  findAll(): Role[] {
+    return this.roles;
   }
 }
