@@ -26,4 +26,8 @@ export class RolesRpository {
   findAll(): Role[] {
     return this.roles;
   }
+
+  findByName(name: string): Role | undefined {
+    return this.roles.find((role) => role.name === name);
+  }
 }
