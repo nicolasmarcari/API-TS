@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API-TS Documentation",
+    "description": "API-TS Documentation with all specifications",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Nicolas Marcari",
+      "email": "xxx@xxx.com"
+    }
+  }
+}
