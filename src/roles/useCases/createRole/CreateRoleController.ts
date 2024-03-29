@@ -4,7 +4,7 @@ import { CreateRoleUseCase } from "./CreateRoleUseCase";
 export class CreateRoleController {
   constructor(private createRoleUseCase: CreateRoleUseCase) {}
 
-  handler(req: Request, res: Response): Response {
+  handle(req: Request, res: Response): Response {
     const { name } = req.body;
     const role = this.createRoleUseCase.execute({ name });
 
