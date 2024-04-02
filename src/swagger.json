@@ -8,5 +8,46 @@
       "name": "Nicolas Marcari",
       "email": "xxx@xxx.com"
     }
+  },
+  "paths": {
+    "/roles": {
+      "post": {
+        "tags": ["Role"],
+        "summary": "Criar uma role",
+        "description": "Cria uma nova role",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Role criada."
+          },
+          "400": {
+            "description": "Role já existe!"
+          }
+        } 
+      },
+      "get": {
+        "tags": ["Role"],
+        "summary": "Listar todas roles.",
+        "description": "Retorna todas as roles paginadas.",
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    }
   }
 }
