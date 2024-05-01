@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createRolesController } from "@roles/useCases/createRole";
 import { listRolesController } from "@roles/useCases/listRoles";
 import { showRolesController } from "@roles/useCases/showRole";
+import { updateRolesController } from "@roles/useCases/updateRole";
 
 const rolesRouter = Router();
 
@@ -15,6 +16,10 @@ rolesRouter.get("/", (req, res) => {
 
 rolesRouter.get("/:id", (req, res) => {
   return showRolesController.handle(req, res);
+});
+
+rolesRouter.put("/:id", (req, res) => {
+  return updateRolesController.handle(req, res);
 });
 
 export { rolesRouter };
