@@ -16,7 +16,7 @@ export class UpdateRoleUseCase {
       throw new AppError("Role not found", 404);
     }
     const roleWithSameName = await this.rolesRepository.findByName(name);
-    if (roleWithSameName && role.name !== roleWithSameName.name) {
+    if (roleWithSameName && role.name === roleWithSameName.name) {
       throw new AppError("Role name already in use or not fond");
     }
     role.name = name;
