@@ -86,7 +86,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Sucesso.",
+            "description": "Success.",
             "content": {
               "application/json": {
                 "example": {
@@ -146,7 +146,7 @@
         },
         "responses": {
           "200": {
-            "description": "Sucesso.",
+            "description": "Sucess.",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,6 +162,62 @@
                       "type": "string"
                     }
                   }
+                },
+                "example": {
+                  "id": "b99d0ee0-9924-461d-9137-6ba05a2e7b48",
+                  "name": "Administrator",
+                  "created_at": "2024-05-01T15:41:56.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "Role not found."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Roles"],
+        "summary": "Encontrando roles pelo ID.",
+        "description": "Retorna a role pelo seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identificador da role",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "label"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "b99d0ee0-9924-461d-9137-6ba05a2e7b48",
+                  "name": "Administrator",
+                  "created_at": "2024-05-01T15:41:56.000Z"
                 }
               }
             }
