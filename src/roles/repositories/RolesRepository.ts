@@ -8,7 +8,7 @@ import {
   RolesPaginateProperties,
 } from "./IRolesRepository";
 
-export class RolesRpository implements IRolesRepository {
+export class RolesRepository implements IRolesRepository {
   private repository: Repository<Role>;
 
   constructor() {
