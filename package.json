@@ -41,6 +41,7 @@
     "rimraf": "^5.0.5",
     "sqlite3": "^5.1.7",
     "swagger-ui-express": "^5.0.0",
+    "tsyringe": "^4.8.0",
     "typeorm": "^0.3.20",
     "uuid": "^9.0.1"
   }
