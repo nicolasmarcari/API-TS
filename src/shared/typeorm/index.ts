@@ -1,17 +1,16 @@
 import { DataSource } from "typeorm";
-import { CreateRolesTable1712416385102 } from "./migrations/1712416385102-CreateRolesTable";
+import { CreateRolesTable1719967175968 } from "./migrations/1719967175968-CreateRolesTable";
 import { Role } from "@roles/entities/Role";
-import { CreateUsersTable1717256434525 } from "./migrations/1717256434525-CreateUsersTable";
-import { AddRoleIDToUsersTable1717258630595 } from "./migrations/1717258630595-AddRoleIDToUsersTable";
+import { CreateUsersTable1719967395353 } from "./migrations/1719967395353-CreateUsersTable";
+import { AddRoleIDToUsersTable1719967535295 } from "./migrations/1719967535295-AddRoleIDToUsersTable";
 import { User } from "@users/entities/User";
-
 export const dataSource = new DataSource({
   type: "sqlite",
   database: "./db.sqlite",
   entities: [Role, User],
   migrations: [
-    CreateRolesTable1712416385102,
-    CreateUsersTable1717256434525,
-    AddRoleIDToUsersTable1717258630595,
+    CreateRolesTable1719967175968,
+    CreateUsersTable1719967395353,
+    AddRoleIDToUsersTable1719967535295,
   ],
 });
