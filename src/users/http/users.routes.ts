@@ -2,9 +2,11 @@ import { Router } from "express";
 import { celebrate, Joi, Segments } from "celebrate";
 import { container } from "tsyringe";
 import { CreateUserController } from "@users/useCases/createUser/CreateUserController";
+import { ListUsersController } from "@users/useCases/listUsers/ListUsersController";
 
 const usersRouter = Router();
 const createUserController = container.resolve(CreateUserController);
+const listUsersController = container.resolve(ListUsersController);
 
 usersRouter.post(
   "/",
@@ -19,6 +21,19 @@ usersRouter.post(
   }),
   (req, res) => {
     return createUserController.handle(req, res);
+  },
+);
+
+usersRouter.get(
+  "/",
+  celebrate({
+    [Segments.QUERY]: {
+      page: Joi.number(),
+      limit: Joi.number(),
+    },
+  }),
+  (req, res) => {
+    return listUsersController.handle(req, res);
   },
 );
 
