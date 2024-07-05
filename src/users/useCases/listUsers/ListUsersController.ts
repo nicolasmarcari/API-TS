@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ListUsersUseCase } from "./ListUsersUseCase";
+import { instanceToInstance } from "class-transformer";
 
 export class ListUsersController {
   async handle(req: Request, res: Response): Promise<Response> {
@@ -13,6 +14,6 @@ export class ListUsersController {
         : 15;
 
     const users = await listUsersUseCase.execute({ page, limit });
-    return res.json(users);
+    return res.json(instanceToInstance(users));
   }
 }
