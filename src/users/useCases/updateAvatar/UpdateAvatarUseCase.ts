@@ -1,14 +1,14 @@
+import { inject, injectable } from "tsyringe";
 import path from "node:path";
 import fs from "node:fs";
 import { AppError } from "@shared/errors/appError";
 import { User } from "@users/entities/User";
 import { IUsersRepository } from "@users/repositories/IUsersRepository";
-import { inject, injectable } from "tsyringe";
 import uploadConfig from "@config/upload";
 
 type UpdateAvatarDTO = {
   userId: string;
-  avatarFileName: string;
+  avatarFilename: string;
 };
 
 @injectable()
@@ -17,7 +17,7 @@ export class UpdateAvatarUseCase {
     @inject("UsersRepository") private usersRepository: IUsersRepository,
   ) {}
 
-  async execute({ userId, avatarFileName }: UpdateAvatarDTO): Promise<User> {
+  async execute({ avatarFilename, userId }: UpdateAvatarDTO): Promise<User> {
     const user = await this.usersRepository.findById(userId);
     if (!user) {
       throw new AppError(
@@ -32,7 +32,7 @@ export class UpdateAvatarUseCase {
         await fs.promises.unlink(userAvatarFilePath);
       }
     }
-    user.avatar = avatarFileName;
-    return await this.usersRepository.save(user);
+    user.avatar = avatarFilename;
+    return this.usersRepository.save(user);
   }
 }

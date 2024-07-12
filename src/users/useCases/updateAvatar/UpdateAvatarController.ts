@@ -8,7 +8,7 @@ export class UpdateAvatarController {
     const updateAvatarUseCase = container.resolve(UpdateAvatarUseCase);
     const user = await updateAvatarUseCase.execute({
       userId: request.user.id,
-      avatarFileName: request.file.filename,
+      avatarFilename: request.file.filename,
     });
     return response.json(instanceToInstance(user));
   }
