@@ -350,6 +350,71 @@
             "description": "Role não encontrada."
           }
         }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "Listar todos usuários.",
+        "description": "Retorna todos os usuários.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of page",
+            "required": false,
+            "schema": {
+              "type":"number",
+              "example": "page=1"
+            },
+            "style": "label"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of registers per page",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": "limit=15"
+            },
+            "style": "label"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "per_page": 15,
+                  "total": 2,
+                  "current_page": 1,
+                  "data": [
+                    {
+                      "id": "eecb5019-3303-4374-a6eb-61926de9c4ff",
+                      "name": "User",
+                      "email": "user@mail.com",
+                      "isAdmin": true,
+                      "avatar": "43c603ca19ae021e370d_err2.jpg",
+                      "created_at": "2024-07-08T21:44:31.000Z",
+                      "role": {
+                          "id": "c50171e0-1e0b-4491-b0f0-196ae8689288",
+                          "name": "T.I",
+                          "created_at": "2024-07-08T21:44:31.000Z"
+                      },
+                      "avatar_url": null
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Invalid authentication token."
+          }
+        }
       }
     }
   }
