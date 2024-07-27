@@ -262,8 +262,8 @@
     "/users": {
       "post": {
         "tags":["Users"],
-        "summary": "Create a user",
-        "description": "Create a new user",
+        "summary": "Cria um usuário",
+        "description": "Cria um novo usuário",
         "requestBody": {
           "content": {
             "application/json": {
@@ -413,6 +413,321 @@
           },
           "401": {
             "description": "Invalid authentication token."
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Autenticacao do usuario",
+        "description": "Autenticacao do usuario na aplicacao",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "nicolas@mail.com",
+                  "password": "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "isAdmin": {
+                          "type": "boolean"
+                        },
+                        "avatar": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "datetime"
+                        }
+                      }
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "user": {
+                    "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
+                    "name": "Nicolas",
+                    "email": "nicolas@mail.com",
+                    "isAdmin": true,
+                    "avatar": null,
+                    "created_at": "2010-06-18T19:17:09.000Z",
+                    "avatar_url": null
+                  },
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU2ODUzMzYsImV4cCI6MTY1NTc3MTczNiwic3ViIjoiM2YzM2NiOTYtMjhlZi00NWY1LWI2ZjQtZGNhZGY4MGM3MmQwIn0.OF3gjxJhOW4xa1i5Uhh_qRgo-SyllMRXroYO_ddFpQM"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Incorrect email/password combination."
+          }
+        }
+      }
+    },
+    "/users/profile": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Atualiza perfil",
+        "description": "Usuario atualiza sua propria imagem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "password_confirmation": {
+                    "type": "string"
+                  },
+                  "old_password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Nicolas",
+                  "email": "nicolas@mail.com",
+                  "password": "123456",
+                  "password_confirmation": "123456",
+                  "old_password": "1234"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "datetime"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
+                  "name": "Nicolas",
+                  "email": "nicolas@mail.com",
+                  "isAdmin": true,
+                  "avatar": null,
+                  "created_at": "2010-06-18T19:17:09.000Z",
+                  "avatar_url": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Old password is required. Old password does not match. There is already one user with this email."
+          },
+          "401": {
+            "description": "Invalid authentication token."
+          },
+          "404": {
+            "description": "User not found."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "Exibe perfil",
+        "description": "Usuario exibe seu perfil",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "datetime"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
+                  "name": "Nicolas",
+                  "email": "nicolas@mail.com",
+                  "isAdmin": true,
+                  "avatar": null,
+                  "created_at": "2010-06-18T19:17:09.000Z",
+                  "avatar_url": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Invalid authentication token."
+          },
+          "404": {
+            "description": "User not found."
+          }
+        }
+      }
+    },
+    "/users/avatar": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Atualiza imagem de avatar",
+        "description": "Usuário atualiza a sua imagem",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "datetime"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
+                  "name": "Nicolas",
+                  "email": "nicolas@mail.com",
+                  "isAdmin": true,
+                  "avatar": null,
+                  "created_at": "2010-06-18T19:17:09.000Z",
+                  "avatar_url": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Invalid authentication token."
+          },
+          "404": {
+            "description": "User not found."
           }
         }
       }
