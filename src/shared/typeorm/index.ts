@@ -4,6 +4,7 @@ import { Role } from "@roles/entities/Role";
 import { CreateUsersTable1719967395353 } from "./migrations/1719967395353-CreateUsersTable";
 import { AddRoleIDToUsersTable1719967535295 } from "./migrations/1719967535295-AddRoleIDToUsersTable";
 import { User } from "@users/entities/User";
+import { CreateRefreshTokensTable1722180360043 } from "./migrations/1722180360043-CreateRefreshTokensTable";
 export const dataSource = new DataSource({
   type: "sqlite",
   database: "./db.sqlite",
@@ -12,5 +13,6 @@ export const dataSource = new DataSource({
     CreateRolesTable1719967175968,
     CreateUsersTable1719967395353,
     AddRoleIDToUsersTable1719967535295,
+    CreateRefreshTokensTable1722180360043,
   ],
 });
