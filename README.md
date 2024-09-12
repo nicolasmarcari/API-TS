@@ -1,6 +1,6 @@
 # API-TS
 
-![Status do Projeto](https://img.shields.io/badge/Status-Concluido-green)
+![Status do Projeto](https://img.shields.io/badge/Status-Em%20Andamento-yellow)
 
 Esse projeto é uma API desenvolvida em Typescript, NodeJS e SQLite. Com a API é possível criar diversas roles que vão ter algum usuário vinculado a elas.
 
